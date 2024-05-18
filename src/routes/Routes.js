@@ -4,6 +4,32 @@ import homeController from '../controllers/homeController.js'; // Importa el con
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * tags:
+ *   name: Home
+ *   description: Home page routes
+ */
+
+/**
+ * @swagger
+ * /home:
+ *   get:
+ *     summary: Get the home page
+ *     tags: [Home]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Returns the home page
+ *         content:
+ *           text/html:
+ *             schema:
+ *               type: string
+ *               description: HTML content of the home page
+ *       401:
+ *         description: Unauthorized
+ */
 router.get('/', ensureAuthenticated, homeController.getHome);
 
 export default router;
